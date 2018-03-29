@@ -1,0 +1,31 @@
+{
+  "name": "coding-theory",
+  "version": "1.0.0",
+  "description": "Exercises from A First Course in Coding Theory by Raymond Hill",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/js-unit/bin/jsunit tests/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evantobin/Coding-Theory.git"
+  },
+  "keywords": [
+    "hamming",
+    "codes",
+    "error",
+    "correcting",
+    "codes",
+    "block",
+    "diagrams"
+  ],
+  "author": "Evan Tobin",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/evantobin/Coding-Theory/issues"
+  },
+  "homepage": "https://github.com/evantobin/Coding-Theory#readme",
+  "devDependencies": {
+    "js-unit": "^1.1.3"
+  }
+}

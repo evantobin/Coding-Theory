@@ -4,7 +4,7 @@
   "description": "Exercises from A First Course in Coding Theory by Raymond Hill",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/js-unit/bin/jsunit tests/*.js"
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/evantobin/Coding-Theory#readme",
   "devDependencies": {
-    "js-unit": "^1.1.3"
+    "jasmine": "^3.1.0",
+    "jasmine-console-reporter": "^2.0.1"
   }
 }

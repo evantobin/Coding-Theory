@@ -1,6 +1,6 @@
 function distance(a, b) {
     if (a.length != b.length) {
-        throw new Exception("Cannot calculate distance between codes of unequal length.");
+        throw new Error("Cannot calculate distance between codes of unequal length.");
     }
     let distance = 0;
     
@@ -14,7 +14,7 @@ function distance(a, b) {
 
 function minDistance(codesArray) {
     if (!(codesArray instanceof Array)) {
-        throw new Exception("Provided code must be an Array.");
+        throw new Error("Provided code must be an Array.");
     }
     var distanceScoped = distance;
 
@@ -36,11 +36,36 @@ function minDistance(codesArray) {
 
 function countCorrectionDetection(codesArray) {
     let distance = minDistance(codesArray);
-    return {detect: minDistance-1, correct: ((minDistance-1)/2)}
+    return {detect: distance-1, correct: Math.floor((distance-1)/2)}
+}
+
+function nearestNeighbour(transmittedCode, codesArray) {
+    if (!(codesArray instanceof Array)) {
+        throw new Error("Provided code must be an Array.");
+    }
+    var distanceScoped = distance;
+
+    var minDistance = -1;
+    var minWord;
+
+    codesArray.every((codeword) => {
+        if (codeword == transmittedCode) {
+            minDistance = 0;
+            minWord = codeword;
+            return;
+        }
+        var distance = distanceScoped(codeword, transmittedCode);
+        if(minDistance == -1 || distance < minDistance) {
+            minDistance = distance;
+            minWord = codeword;
+        }
+    });
+    return minWord;
 }
 
 module.exports = {
     distance: distance,
     minDistance: minDistance,
-    countCorrectionDetection: countCorrectionDetection
+    countCorrectionDetection: countCorrectionDetection,
+    nearestNeighbour: nearestNeighbour
 }

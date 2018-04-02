@@ -3,9 +3,9 @@ var CodingTheory = require('../../');
 describe("Linear Codes", function() {
 
     it("calculate hamming distance correctly", function() {
-        let a = "1111";
-        let b = "0000";
-        let c = "1111";
+        let a = [1,1,1,1];
+        let b = [0,0,0,0];
+        let c = [1,1,1,1];
         var distance;
 
         distance = CodingTheory.LinearCode.distance(a,b);
@@ -22,8 +22,8 @@ describe("Linear Codes", function() {
     });
 
     it("calculates min distance correctly", function() {
-        let codes1 = ["1111","0000"];
-        let codes2 = ["1110","0000","1111"];
+        let codes1 = [[1,1,1,1],[0,0,0,0]];
+        let codes2 = [[1,1,1,0],[0,0,0,0],[1,1,1,1]];
         var distance;
 
         distance = CodingTheory.LinearCode.minDistance(codes1);
@@ -34,8 +34,8 @@ describe("Linear Codes", function() {
     });
 
     it("calculates error detection of a code correctly", function() {
-        let codes1 = ["1111","0000"];
-        let codes2 = ["000","011","101","110"];
+        let codes1 = [[1,1,1,1],[0,0,0,0]];
+        let codes2 = [[0,0,0],[0,1,1],[1,0,1],[1,1,0]];
         var errorHandling;
 
         errorHandling = CodingTheory.LinearCode.countCorrectionDetection(codes1);
@@ -46,8 +46,8 @@ describe("Linear Codes", function() {
     });
 
     it("calculates error correction of a code correctly", function() {
-        let codes1 = ["1111","0000"];
-        let codes2 = ["000","011","101","110"];
+        let codes1 = [[1,1,1,1],[0,0,0,0]];
+        let codes2 = [[0,0,0],[0,1,1],[1,0,1],[1,1,0]];
         var errorHandling;
 
         errorHandling = CodingTheory.LinearCode.countCorrectionDetection(codes1);
@@ -59,22 +59,22 @@ describe("Linear Codes", function() {
 
 
     it("can correct one bit error with nearest neighbor", function() {
-        let codes1 = ["1111","0000"];
-        let codes2 = ["bbbb","aaaa","cccc"];
+        let codes1 = [[1,1,1,1],[0,0,0,0]];
+        let codes2 = [['b','b','b','b'],['a','a','a','a'],['c','c','c','c']];
         var errorHandling;
 
-        errorHandling = CodingTheory.LinearCode.nearestNeighbour("0111", codes1);
-        expect(errorHandling).toBe("1111");
+        errorHandling = CodingTheory.LinearCode.nearestNeighbour([0,1,1,1], codes1);
+        expect(errorHandling).toEqual([1,1,1,1]);
 
-        errorHandling = CodingTheory.LinearCode.nearestNeighbour("abbb", codes2);
-        expect(errorHandling).toBe("bbbb");
+        errorHandling = CodingTheory.LinearCode.nearestNeighbour(['a','b','b','b'], codes2);
+        expect(errorHandling).toEqual(['b','b','b','b']);
     });
 
     it("can correct two bit error with nearest neighbor", function() {
-        let codes1 = ["10101","01010"];
+        let codes1 = [[1,0,1,0,1],[0,1,0,1,0]];
         var errorHandling;
 
-        errorHandling = CodingTheory.LinearCode.nearestNeighbour("01101", codes1);
-        expect("10101", errorHandling).toBe("10101");
+        errorHandling = CodingTheory.LinearCode.nearestNeighbour([0,1,1,0,1], codes1);
+        expect(errorHandling).toEqual([1,0,1,0,1]);
     });
   });

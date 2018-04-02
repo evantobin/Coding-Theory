@@ -16,9 +16,10 @@ describe("Balanced Block Design", function() {
         expect(CodingTheory.BalancedBlockDesign.generateArray(blockDesign)).toBeFalsy();
     });
 
-    it("checks correctly", function() {
+    it("check returns true for correct block matrix", function() {
         var blockDesign;
         blockDesign = new CodingTheory.BalancedBlockDesign.BalancedBlockDesign(7,7,3,3,1);
+        
         blockDesign.matrix = [[0,1,3],[1,2,4],[2,3,5],[3,4,6],[4,5,0],[5,6,1],[6,0,2]];
         expect(CodingTheory.BalancedBlockDesign.checkMatrix(blockDesign)).toBeTruthy();
     });

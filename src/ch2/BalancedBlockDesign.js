@@ -22,7 +22,7 @@ function generateArray(blockDesign) {
         }
     }
 
-    var combos = k_combinations(points,3);
+    var combos = k_combinations(points, 3);
     
     // recurrsive function to choose a block design
     var randomBlockDesign = function(combos, design, num){
@@ -163,7 +163,7 @@ function checkMatrix(blockDesign) {
         for(var j=0;j<thisBlock.length;j++) {
 
             repeatPerPoint[thisBlock[j]]--;
-            // if a point is used more times then allowed => false
+            // if a point is used more times then allowed then false
             if(repeatPerPoint<0) {
                 return false;
             }
@@ -172,6 +172,7 @@ function checkMatrix(blockDesign) {
             for(var k=0;k<thisBlock.length;k++) {
                 if(thisBlock[j] != thisBlock[k]) {
                     occurances[thisBlock[j]][thisBlock[k]]--;
+                    //if a point occurs with another point more times than possible then false
                     if(occurances[thisBlock[j]][thisBlock[k]] < 0) {
                         return false;
                     }

@@ -3,7 +3,7 @@ var CodingTheory = require('../../');
 describe("Linear Codes", function() {
 
     it("calculate hamming distance correctly", function() {
-        let a = [1,1,1,1];
+        let a = [1,1,1,1]; 
         let b = [0,0,0,0];
         let c = [1,1,1,1];
         var distance;
